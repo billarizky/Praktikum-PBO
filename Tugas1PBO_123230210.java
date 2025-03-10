@@ -6,22 +6,22 @@ import java.awt.event.*;
 import java.io.*;
 import java.util.ArrayList;
 
-public class LoginApp {
+public class Login {
     private static ArrayList<String> dataList = new ArrayList<>();
 
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(LoginApp::buatHalamanLogin);
+        SwingUtilities.invokeLater(Login::buatHalamanLogin);
     }
 
     private static void buatHalamanLogin() {
         JFrame frame = new JFrame("Login");
-        frame.setSize(300, 200);
+        frame.setSize(400, 200);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         JPanel panel = new JPanel();
         frame.add(panel);
         
         JLabel lblUser = new JLabel("Username:");
-        JTextField txtUser = new JTextField(15);
+        JTextField txtUser = new JTextField(20);
         JLabel lblPass = new JLabel("Password:");
         JPasswordField txtPass = new JPasswordField(15);
         JButton btnLogin = new JButton("Login");
@@ -34,14 +34,15 @@ public class LoginApp {
         panel.add(btnLogin);
         panel.add(lblMessage);
         
-        btnLogin.addActionListener(e -> {
+       btnLogin.addActionListener(e -> {
             String user = txtUser.getText().toLowerCase();
             String pass = new String(txtPass.getPassword()).toLowerCase();
             if (user.equals("pbo") && pass.equals("if-d")) {
                 frame.dispose();
                 buatHalamanUtama();
             } else {
-                lblMessage.setText("Gagal Login!");
+                txtUser.setText(""); 
+                lblMessage.setText("Gagal Login! Silakan masukkan kembali username.");
             }
         });
         
@@ -50,15 +51,15 @@ public class LoginApp {
 
     private static void buatHalamanUtama() {
         JFrame frame = new JFrame("Halaman Utama");
-        frame.setSize(400, 350);
+        frame.setSize(500, 450);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         JPanel panel = new JPanel();
         frame.add(panel);
         
         JLabel lblDepan = new JLabel("Nama Depan:");
-        JTextField txtDepan = new JTextField(15);
+        JTextField txtDepan = new JTextField(20);
         JLabel lblBelakang = new JLabel("Nama Belakang:");
-        JTextField txtBelakang = new JTextField(15);
+        JTextField txtBelakang = new JTextField(20);
         JLabel lblGender = new JLabel("Jenis Kelamin:");
         JTextField txtGender = new JTextField(10);
         JButton btnSimpan = new JButton("Simpan");
@@ -94,7 +95,7 @@ public class LoginApp {
                 JOptionPane.showMessageDialog(frame, "Tidak ada data untuk disimpan!");
             } else {
                 simpanKeFile();
-                JOptionPane.showMessageDialog(frame, "Data tersimpan di data_nim.txt");
+                JOptionPane.showMessageDialog(frame, "Data tersimpan");
             }
         });
         
@@ -116,7 +117,7 @@ public class LoginApp {
 
 public class Tugas1PBO_123230210 {
     public static void main(String[] args) {
-       
+       new login();
     }
     
 }
